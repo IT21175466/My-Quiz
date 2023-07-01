@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                           child: ListTile(
                             leading: Icon(Icons.quiz),
                             title: Text(
-                              "Social Media Quiz",
+                              "Dart Quiz",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),

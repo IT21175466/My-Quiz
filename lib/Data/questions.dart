@@ -1,90 +1,96 @@
 class Questions {
   static List<Map<String, dynamic>> quizData = [
     {
+      'id': '1',
       'question': 'What is Dart?',
-      'options': [
-        'A programming language developed by Google',
-        'A database management system',
-        'A type of musical instrument',
-        'An operating system'
-      ],
-      'correctIndex': 0,
+      'optionOne': 'A programming language developed by Google',
+      'optionTwo': 'A database management system',
+      'optionThree': 'A type of musical instrument',
+      'optionFour': 'An operating system',
+      'correctAnswer': 'A programming language developed by Google',
     },
     {
+      'id': '2',
       'question': 'What is the main purpose of Dart?',
-      'options': [
-        'To build mobile applications',
-        'To create web applications',
-        'To develop server-side applications',
-        'To design user interfaces'
-      ],
-      'correctIndex': 0,
+      'optionOne': 'To build mobile applications',
+      'optionTwo': 'To create web applications',
+      'optionThree': 'To develop server-side applications',
+      'optionFour': 'To design user interfaces',
+      'correctAnswer': 'To build mobile applications',
     },
     {
+      'id': '3',
       'question': 'Which of the following is true about Dart?',
-      'options': [
-        'It is a statically-typed language',
-        'It is based on the Java programming language',
-        'It only supports single-threaded execution',
-        'It is primarily used for data analysis'
-      ],
-      'correctIndex': 0,
+      'optionOne': 'It is a statically-typed language',
+      'optionTwo': 'It is based on the Java programming language',
+      'optionThree': 'It only supports single-threaded execution',
+      'optionFour': 'It is primarily used for data analysis',
+      'correctAnswer': 'It is a statically-typed language',
     },
     {
+      'id': '4',
       'question': 'What is the keyword used to define a variable in Dart?',
-      'options': ['let', 'var', 'const', 'final'],
-      'correctIndex': 1,
+      'optionOne': 'let',
+      'optionTwo': 'var',
+      'optionThree': 'const',
+      'optionFour': 'final',
+      'correctAnswer': 'var',
     },
     {
+      'id': '5',
       'question': 'What does the "async" keyword indicate in Dart?',
-      'options': [
-        'The function returns a Future',
-        'The function is synchronous',
-        'The function is a generator',
-        'The function is an event handler'
-      ],
-      'correctIndex': 0,
+      'optionOne': 'The function returns a Future',
+      'optionTwo': 'The function is synchronous',
+      'optionThree': 'The function is a generator',
+      'optionFour': 'The function is an event handler',
+      'correctAnswer': 'The function returns a Future',
     },
     {
+      'id': '6',
       'question': 'Which collection in Dart allows duplicate values?',
-      'options': ['List', 'Set', 'Map', 'Queue'],
-      'correctIndex': 0,
+      'optionOne': 'List',
+      'optionTwo': 'Set',
+      'optionThree': 'Map',
+      'optionFour': 'Queue',
+      'correctAnswer': 'List',
     },
     {
+      'id': '7',
       'question': 'How do you add an element to the end of a List in Dart?',
-      'options': [
-        'list.add(element)',
-        'list.insert(element)',
-        'list.append(element)',
-        'list.push(element)'
-      ],
-      'correctIndex': 0,
+      'optionOne': 'list.add(element)',
+      'optionTwo': 'list.insert(element)',
+      'optionThree': 'list.append(element)',
+      'optionFour': 'list.push(element)',
+      'correctAnswer': 'list.add(element)',
     },
     {
+      'id': '8',
       'question':
           'What is the output of the following Dart code snippet?\n\nvar x = 5;\nvar y = x++;\nprint(y);',
-      'options': ['4', '5', '6', 'Error'],
-      'correctIndex': 1,
+      'optionOne': '4',
+      'optionTwo': '5',
+      'optionThree': '6',
+      'optionFour': 'Error',
+      'correctAnswer': '5',
     },
     {
+      'id': '9',
       'question': 'How do you perform string interpolation in Dart?',
-      'options': [
-        "'Hello, \$name!'",
-        "'Hello, {name}!'",
-        "'Hello, %name!'",
-        "'Hello, #name!'"
-      ],
-      'correctIndex': 0,
+      'optionOne': "'Hello, \$name!'",
+      'optionTwo': "'Hello, {name}!'",
+      'optionThree': "'Hello, %name!'",
+      'optionFour': "'Hello, #name!'",
+      'correctAnswer': "'Hello, \$name!'",
     },
     {
+      'id': '10',
       'question': 'What does the "is" keyword do in Dart?',
-      'options': [
-        'It checks if two objects are equal',
-        'It checks if an object is an instance of a specific type',
-        'It performs bitwise operations on integers',
-        'It converts a string to an integer'
-      ],
-      'correctIndex': 1,
+      'optionOne': 'It checks if an object is an instance of a specific type',
+      'optionTwo': 'It checks if two objects are equal',
+      'optionThree': 'It performs bitwise operations on integers',
+      'optionFour': 'It checks if a string is empty',
+      'correctAnswer':
+          'It checks if an object is an instance of a specific type',
     },
   ];
 }
