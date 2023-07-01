@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_quize/Question_Page/UI/QuestionPage.dart';
 
 import '../bloc/home_bloc.dart';
 
@@ -11,7 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  HomeBloc homeBloc = HomeBloc();
+  final HomeBloc homeBloc = HomeBloc();
 
   @override
   void initState() {
@@ -23,17 +24,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       bloc: homeBloc,
-      listenWhen: (previous, current) => current is HomeInitialState,
-      buildWhen: (previous, current) => current is! HomeInitialState,
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is CartButtonClickedNavigateActionState) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => QuestionPage()));
+        }
+      },
       builder: (context, state) {
         switch (state.runtimeType) {
           case HomeLoadingState:
             return Scaffold(
               appBar: AppBar(
-                leading: Icon(
-                  Icons.menu,
+                leading: IconButton(
+                  onPressed: () {
+                    print("object");
+                  },
                   color: Colors.white,
+                  icon: Icon(Icons.menu),
                 ),
                 title: Column(
                   children: [
@@ -81,12 +88,17 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             );
+
           case HomeLoadedState:
             return Scaffold(
               appBar: AppBar(
-                leading: Icon(
-                  Icons.menu,
+                leading: IconButton(
+                  onPressed: () {
+                    print("object");
+                    homeBloc.add(CardNavigateToQuestionPageEvent());
+                  },
                   color: Colors.white,
+                  icon: Icon(Icons.menu),
                 ),
                 title: Column(
                   children: [
@@ -153,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            subtitle: Text("Time Duration 30 Min"),
+                            subtitle: Text("Time Duration 40 Min"),
                             trailing: IconButton(
                               onPressed: () {},
                               icon: Icon(Icons.adaptive.arrow_forward),
