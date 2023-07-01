@@ -11,4 +11,4 @@ class HomeLoadingState extends HomeState {}
 
 class HomeLoadedState extends HomeState {}
 
-class CartButtonClickedNavigateActionState extends HomeActionState {}
+class QuizCardButtonClickedNavigateActionState extends HomeActionState {}

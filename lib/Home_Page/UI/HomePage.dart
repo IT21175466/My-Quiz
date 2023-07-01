@@ -24,8 +24,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       bloc: homeBloc,
+      listenWhen: (previous, current) => current is HomeActionState,
+      buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
-        if (state is CartButtonClickedNavigateActionState) {
+        if (state is QuizCardButtonClickedNavigateActionState) {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => QuestionPage()));
         }
@@ -35,12 +37,9 @@ class _HomePageState extends State<HomePage> {
           case HomeLoadingState:
             return Scaffold(
               appBar: AppBar(
-                leading: IconButton(
-                  onPressed: () {
-                    print("object");
-                  },
+                leading: Icon(
+                  Icons.menu,
                   color: Colors.white,
-                  icon: Icon(Icons.menu),
                 ),
                 title: Column(
                   children: [
@@ -68,37 +67,30 @@ class _HomePageState extends State<HomePage> {
                 ),
                 backgroundColor: Colors.green,
               ),
-              body: Center(
-                child: Column(
-                  children: [
+              body: Container(
+                child: Center(
+                  child: Column(children: [
                     Spacer(),
-                    Text(
-                      "Loading Your Quizes.....",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    CircularProgressIndicator(),
                     SizedBox(
                       height: 15,
                     ),
-                    CircularProgressIndicator(),
+                    Text(
+                      "Loading....",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                    ),
                     Spacer(),
-                  ],
+                  ]),
                 ),
               ),
             );
-
           case HomeLoadedState:
             return Scaffold(
               appBar: AppBar(
-                leading: IconButton(
-                  onPressed: () {
-                    print("object");
-                    homeBloc.add(CardNavigateToQuestionPageEvent());
-                  },
+                leading: Icon(
+                  Icons.menu,
                   color: Colors.white,
-                  icon: Icon(Icons.menu),
                 ),
                 title: Column(
                   children: [
@@ -167,7 +159,9 @@ class _HomePageState extends State<HomePage> {
                             ),
                             subtitle: Text("Time Duration 40 Min"),
                             trailing: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                homeBloc.add(CardNavigateToQuestionPageEvent());
+                              },
                               icon: Icon(Icons.adaptive.arrow_forward),
                             ),
                           ),
@@ -219,7 +213,9 @@ class _HomePageState extends State<HomePage> {
                             ),
                             subtitle: const Text("Time Duration 30 Min"),
                             trailing: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                homeBloc.add(CardNavigateToQuestionPageEvent());
+                              },
                               icon: Icon(Icons.adaptive.arrow_forward),
                             ),
                           ),
@@ -231,7 +227,9 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           default:
-            return SizedBox();
+            return Container(
+              color: Colors.white,
+            );
         }
       },
     );

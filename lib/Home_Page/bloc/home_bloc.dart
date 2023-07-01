@@ -21,6 +21,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> cardNavigateToQuestionPageEvent(
       CardNavigateToQuestionPageEvent event, Emitter<HomeState> emit) {
-    emit(CartButtonClickedNavigateActionState());
+    emit(QuizCardButtonClickedNavigateActionState());
   }
 }
