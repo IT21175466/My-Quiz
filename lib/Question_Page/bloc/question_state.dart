@@ -13,8 +13,6 @@ class QuestionLoadedSucessState extends QuestionState {
   QuestionLoadedSucessState(this.question);
 }
 
-class AnswerClickingState extends QuestionState {}
-
 class AnswerCorrectState extends QuestionActionState {}
 
 class AnswerWrongState extends QuestionActionState {}

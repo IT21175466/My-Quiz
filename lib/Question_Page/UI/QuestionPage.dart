@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import '../bloc/question_bloc.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -31,11 +32,21 @@ class _QuestionPageState extends State<QuestionPage> {
             context: context,
             builder: (BuildContext dialogContext) {
               return CupertinoAlertDialog(
-                title: Text("Congratulations"),
-                content: Text("Your Answer is Correct"),
+                content: Column(
+                  children: [
+                    Container(
+                      child: Lottie.network(
+                          'https://assets7.lottiefiles.com/packages/lf20_9aa9jkxv.json'),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text("Your Anser is Correct!"),
+                  ],
+                ),
                 actions: <Widget>[
                   CupertinoDialogAction(
-                    child: Text("Close"),
+                    child: Text("OK"),
                     onPressed: () {
                       Navigator.of(dialogContext).pop();
                     },
