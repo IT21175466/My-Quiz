@@ -28,8 +28,8 @@ class _PaperEndPageState extends State<PaperEndPage> {
         child: Column(
           children: [
             Spacer(),
-            //Lottie.network(
-            //'https://assets3.lottiefiles.com/packages/lf20_mbznsnmf.json'),
+            Lottie.network(
+                'https://assets3.lottiefiles.com/packages/lf20_mbznsnmf.json'),
             SizedBox(
               height: 25,
             ),
