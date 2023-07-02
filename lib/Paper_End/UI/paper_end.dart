@@ -23,14 +23,14 @@ class _PaperEndPageState extends State<PaperEndPage> {
       buildWhen: (previous, current) => current is! PaperEndActionState,
       listener: (context, state) {
         if (state is PaperEndActionState) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomePage()));
         }
       },
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(
+            title: const Text(
               "Quiz Ended",
               style: TextStyle(
                 color: Colors.white,
@@ -40,18 +40,18 @@ class _PaperEndPageState extends State<PaperEndPage> {
             backgroundColor: Colors.green,
           ),
           body: Container(
-            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 15),
+            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 15),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Lottie.network(
                     'https://assets3.lottiefiles.com/packages/lf20_mbznsnmf.json'),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
-                Center(
+                const Center(
                   child: Text(
                     "Congratulations!",
                     style: TextStyle(
@@ -60,10 +60,10 @@ class _PaperEndPageState extends State<PaperEndPage> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
-                Center(
+                const Center(
                   child: Text(
                     "You Completed The Quiz Successfully.",
                     style: TextStyle(
@@ -72,12 +72,12 @@ class _PaperEndPageState extends State<PaperEndPage> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 ElevatedButton(
                   onPressed: () {
                     paperEndBloc.add(PaperEndPageNavigateToHomePage());
                   },
-                  child: Text(
+                  child: const Text(
                     "OK",
                     style: TextStyle(
                       fontSize: 25,
@@ -87,7 +87,7 @@ class _PaperEndPageState extends State<PaperEndPage> {
                     ),
                   ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll<Color>(
+                    backgroundColor: const MaterialStatePropertyAll<Color>(
                       Colors.green,
                     ),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -95,7 +95,8 @@ class _PaperEndPageState extends State<PaperEndPage> {
                         borderRadius: BorderRadius.circular(50),
                       ),
                     ),
-                    minimumSize: MaterialStateProperty.all<Size>(Size(370, 65)),
+                    minimumSize:
+                        MaterialStateProperty.all<Size>(const Size(370, 65)),
 
                     // Set the button's minimum size
                   ),

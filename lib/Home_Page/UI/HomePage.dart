@@ -155,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            subtitle: const Text("Time Duration 10 Min"),
+                            subtitle: const Text("Time Duration 20 Min"),
                             trailing: IconButton(
                               onPressed: () {
                                 homeBloc.add(CardNavigateToQuestionPageEvent());
