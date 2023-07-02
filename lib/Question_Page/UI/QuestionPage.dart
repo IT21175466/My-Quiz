@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import '../../Paper_End/UI/paper_end.dart';
 import '../bloc/question_bloc.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -12,6 +13,7 @@ class QuestionPage extends StatefulWidget {
 }
 
 class _QuestionPageState extends State<QuestionPage> {
+  int counter = 0;
   final QuestionBloc questionBloc = QuestionBloc();
 
   @override
@@ -58,6 +60,12 @@ class _QuestionPageState extends State<QuestionPage> {
         } else if (state is AnswerWrongState) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text("Your Answer is Wrong!")));
+        } else if (state is NextButtonClickedState) {
+          counter = state.currentIndex;
+          print(counter);
+        } else if (state is PaperEndState) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => PaperEndPage()));
         }
       },
       builder: (context, state) {
@@ -67,11 +75,30 @@ class _QuestionPageState extends State<QuestionPage> {
 
             return Scaffold(
               appBar: AppBar(
-                title: Text(
-                  "Quiz Page",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700,
+                title: Center(
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Quiz Page",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Text(
+                          "Question ${counter + 1} / ${loadedState.question.length}",
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 backgroundColor: Colors.green,
@@ -85,7 +112,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        loadedState.question[0].question,
+                        loadedState.question[counter].question,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 23,
@@ -96,7 +123,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     GestureDetector(
                       onTap: () {
                         questionBloc.add(AnswerClickedEvent(
-                            loadedState.question[0].optionOne));
+                            loadedState.question[counter].optionOne));
                       },
                       child: Container(
                         height: 80,
@@ -109,7 +136,7 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            loadedState.question[0].optionOne,
+                            loadedState.question[counter].optionOne,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
@@ -124,7 +151,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     GestureDetector(
                       onTap: () {
                         questionBloc.add(AnswerClickedEvent(
-                            loadedState.question[0].optionTwo));
+                            loadedState.question[counter].optionTwo));
                       },
                       child: Container(
                         height: 80,
@@ -137,7 +164,7 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            loadedState.question[0].optionTwo,
+                            loadedState.question[counter].optionTwo,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
@@ -152,7 +179,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     GestureDetector(
                       onTap: () {
                         questionBloc.add(AnswerClickedEvent(
-                            loadedState.question[0].optionThree));
+                            loadedState.question[counter].optionThree));
                       },
                       child: Container(
                         height: 80,
@@ -165,7 +192,7 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            loadedState.question[0].optionThree,
+                            loadedState.question[counter].optionThree,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
@@ -180,7 +207,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     GestureDetector(
                       onTap: () {
                         questionBloc.add(AnswerClickedEvent(
-                            loadedState.question[0].optionFour));
+                            loadedState.question[counter].optionFour));
                       },
                       child: Container(
                         height: 80,
@@ -193,7 +220,7 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            loadedState.question[0].optionFour,
+                            loadedState.question[counter].optionFour,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
@@ -204,7 +231,10 @@ class _QuestionPageState extends State<QuestionPage> {
                     ),
                     Spacer(),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        questionBloc.add(
+                            NextQuestionIncrementEvent(currentIndex: counter));
+                      },
                       child: Text(
                         "Next",
                         style: TextStyle(
@@ -236,6 +266,7 @@ class _QuestionPageState extends State<QuestionPage> {
                 //QuestionTile(questionModel: loadedState.question[0]),
               ),
             );
+
           default:
             return SizedBox();
         }

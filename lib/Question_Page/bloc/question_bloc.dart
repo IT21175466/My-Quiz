@@ -9,9 +9,11 @@ part 'question_event.dart';
 part 'question_state.dart';
 
 class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
+  int currentIndexx = 0;
   QuestionBloc() : super(QuestionInitialState()) {
     on<QuestionInitialEvent>(questionInitialEvent);
     on<AnswerClickedEvent>(answerClickedEvent);
+    on<NextQuestionIncrementEvent>(nextQuestionIncrementEvent);
   }
 
   FutureOr<void> questionInitialEvent(
@@ -35,7 +37,8 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
       AnswerClickedEvent event, Emitter<QuestionState> emit) {
     final loadedState = state as QuestionLoadedSucessState;
 
-    if (loadedState.question[0].correctAnswer == event.clickedAnswer) {
+    if (loadedState.question[currentIndexx].correctAnswer ==
+        event.clickedAnswer) {
       print("Answer Correct");
       emit(AnswerCorrectState());
     } else {
@@ -56,5 +59,31 @@ class QuestionBloc extends Bloc<QuestionEvent, QuestionState> {
           ),
         )
         .toList())));
+  }
+
+  FutureOr<void> nextQuestionIncrementEvent(
+      NextQuestionIncrementEvent event, Emitter<QuestionState> emit) {
+    currentIndexx = event.currentIndex;
+    currentIndexx++;
+
+    if (currentIndexx == Questions.quizData.length) {
+      emit(PaperEndState());
+    } else {
+      emit(NextButtonClickedState(currentIndexx));
+
+      emit(QuestionLoadedSucessState((Questions.quizData
+          .map(
+            (e) => QuestionModel(
+              id: e['id'],
+              question: e['question'],
+              optionOne: e['optionOne'],
+              optionTwo: e['optionTwo'],
+              optionThree: e['optionThree'],
+              optionFour: e['optionFour'],
+              correctAnswer: e['correctAnswer'],
+            ),
+          )
+          .toList())));
+    }
   }
 }

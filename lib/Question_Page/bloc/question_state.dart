@@ -16,3 +16,11 @@ class QuestionLoadedSucessState extends QuestionState {
 class AnswerCorrectState extends QuestionActionState {}
 
 class AnswerWrongState extends QuestionActionState {}
+
+class NextButtonClickedState extends QuestionActionState {
+  final int currentIndex;
+
+  NextButtonClickedState(this.currentIndex);
+}
+
+class PaperEndState extends QuestionActionState {}

@@ -3,9 +3,9 @@ class Questions {
     {
       'id': '1',
       'question': 'What is Dart?',
-      'optionOne': 'A programming language developed by Google',
+      'optionOne': 'A type of musical instrument',
       'optionTwo': 'A database management system',
-      'optionThree': 'A type of musical instrument',
+      'optionThree': 'A programming language developed by Google',
       'optionFour': 'An operating system',
       'correctAnswer': 'A programming language developed by Google',
     },
@@ -48,9 +48,9 @@ class Questions {
     {
       'id': '6',
       'question': 'Which collection in Dart allows duplicate values?',
-      'optionOne': 'List',
+      'optionOne': 'Map',
       'optionTwo': 'Set',
-      'optionThree': 'Map',
+      'optionThree': 'List',
       'optionFour': 'Queue',
       'correctAnswer': 'List',
     },

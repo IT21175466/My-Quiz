@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_quize/Home_Page/UI/HomePage.dart';
+
+import 'Home_Page/UI/HomePage.dart';
 
 void main() {
   runApp(const MyApp());

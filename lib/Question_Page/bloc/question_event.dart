@@ -10,3 +10,9 @@ class AnswerClickedEvent extends QuestionEvent {
 
   AnswerClickedEvent(this.clickedAnswer);
 }
+
+class NextQuestionIncrementEvent extends QuestionEvent {
+  int currentIndex;
+
+  NextQuestionIncrementEvent({required this.currentIndex});
+}

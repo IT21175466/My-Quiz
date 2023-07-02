@@ -28,8 +28,8 @@ class _HomePageState extends State<HomePage> {
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
         if (state is QuizCardButtonClickedNavigateActionState) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => QuestionPage()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const QuestionPage()));
         }
       },
       builder: (context, state) {
@@ -37,11 +37,11 @@ class _HomePageState extends State<HomePage> {
           case HomeLoadingState:
             return Scaffold(
               appBar: AppBar(
-                leading: Icon(
+                leading: const Icon(
                   Icons.menu,
                   color: Colors.white,
                 ),
-                title: Column(
+                title: const Column(
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
@@ -67,32 +67,29 @@ class _HomePageState extends State<HomePage> {
                 ),
                 backgroundColor: Colors.green,
               ),
-              body: Container(
-                child: Center(
-                  child: Column(children: [
-                    Spacer(),
-                    CircularProgressIndicator(),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "Loading....",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                    ),
-                    Spacer(),
-                  ]),
-                ),
+              body: const Center(
+                child: Column(children: [
+                  Spacer(),
+                  CircularProgressIndicator(),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "Loading....",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
+                  Spacer(),
+                ]),
               ),
             );
           case HomeLoadedState:
             return Scaffold(
               appBar: AppBar(
-                leading: Icon(
+                leading: const Icon(
                   Icons.menu,
                   color: Colors.white,
                 ),
-                title: Column(
+                title: const Column(
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
@@ -120,16 +117,17 @@ class _HomePageState extends State<HomePage> {
               ),
               body: SingleChildScrollView(
                 child: Container(
-                  color: Color.fromARGB(255, 238, 237, 237),
+                  color: const Color.fromARGB(255, 238, 237, 237),
                   width: double.infinity,
                   height: double.maxFinite,
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Align(
+                      const Align(
                         alignment: Alignment.topLeft,
                         child: Text(
                           "My All Quizzes",
@@ -139,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
@@ -150,14 +148,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Center(
                           child: ListTile(
-                            leading: Icon(Icons.quiz),
-                            title: Text(
+                            leading: const Icon(Icons.quiz),
+                            title: const Text(
                               "Dart Quiz",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            subtitle: Text("Time Duration 40 Min"),
+                            subtitle: const Text("Time Duration 10 Min"),
                             trailing: IconButton(
                               onPressed: () {
                                 homeBloc.add(CardNavigateToQuestionPageEvent());
@@ -167,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
@@ -178,14 +176,14 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Center(
                           child: ListTile(
-                            leading: Icon(Icons.quiz),
-                            title: Text(
+                            leading: const Icon(Icons.quiz),
+                            title: const Text(
                               "Social Media Quiz",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            subtitle: Text("Time Duration 30 Min"),
+                            subtitle: const Text("Time Duration 30 Min"),
                             trailing: IconButton(
                               onPressed: () {},
                               icon: Icon(Icons.adaptive.arrow_forward),
@@ -193,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
